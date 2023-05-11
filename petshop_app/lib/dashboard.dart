@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:petshop_app/util/input_field.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({super.key});
@@ -12,10 +13,13 @@ class DashBoard extends StatefulWidget {
 
 class _DashBoardState extends State<DashBoard> {
   bool hasNewNotification = true;
+  final controller = TextEditingController();
+  final hintext = 'Search in app .....';
 
-  void handleNotification(){
+  void handleNotification() {
     setState(() => hasNewNotification = false);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,13 +47,15 @@ class _DashBoardState extends State<DashBoard> {
                         Text(
                           'Hello @User',
                           style: TextStyle(
-                              fontFamily: GoogleFonts.openSans().fontFamily,
-                              fontSize: 14),
+                              fontFamily: GoogleFonts.inter().fontFamily,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16),
                         )
                       ],
                     ),
                   ),
-                  GestureDetector(onTap: () => handleNotification(),
+                  GestureDetector(
+                    onTap: () => handleNotification(),
                     child: Container(
                       width: 40,
                       height: 40,
@@ -63,20 +69,42 @@ class _DashBoardState extends State<DashBoard> {
                             color: Color.fromARGB(255, 118, 118, 110),
                           ),
                         ),
-                        if(hasNewNotification)
-                        Positioned(
-                            top: 0,
-                            right: 0,
-                            child: Container(
-                              width: 8,
-                              height: 8,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle, color: Colors.green[200]),
-                            ))
+                        if (hasNewNotification)
+                          Positioned(
+                              top: 0,
+                              right: 0,
+                              child: Container(
+                                width: 8,
+                                height: 8,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.green[200]),
+                              ))
                       ]),
                     ),
                   )
                 ],
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InputField(
+                      controller: controller,
+                      hintext: hintext,
+                    ),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.green[100],
+                      ),
+                      child: Image.asset('lib/assets/searching.png',),
+                    )
+                  ],
+                ),
               )
             ],
           ),

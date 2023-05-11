@@ -36,51 +36,54 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(223, 184, 235, 245),
-      body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Padding(
-          padding: EdgeInsets.all(30.0),
-          child: SizedBox(
-            width: 500,
-            height: 300,
-            child: Lottie.asset('lib/assets/dog.json',frameRate: FrameRate(120)),
-          ),
-        ),
-        SizedBox(
-          child: Padding(
-            padding: EdgeInsets.all(70.0),
-            child: Text(
-              'Provide the best treats to your best friend !!',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: GoogleFonts.workSans().fontFamily,
-                  fontSize: 22,
-                  color: Color.fromARGB(255, 255, 255, 255)),
+      body: SafeArea(
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Padding(
+            padding: EdgeInsets.all(30.0),
+            child: SizedBox(
+              width: 500,
+              height: 300,
+              child:
+                  Lottie.asset('lib/assets/dog.json', frameRate: FrameRate(120)),
             ),
           ),
-        ),
-        GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const DashBoard()));
-          },
-          child: Container(
-            height: 50,
-            width: 250,
-            decoration: BoxDecoration(
-                color: Color.fromARGB(255, 0, 0, 0),
-                borderRadius: BorderRadius.circular(10)),
-            child: Center(
-                child: Text(
-              'Shop Now',
-              style: TextStyle(
-                  fontFamily: GoogleFonts.openSans().fontFamily,
-                  fontSize: 18,
-                  color: Colors.white),
-            )),
+          SizedBox(
+            child: Padding(
+              padding: EdgeInsets.all(70.0),
+              child: Text(
+                'Provide the best treats to your best friend !!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: GoogleFonts.workSans().fontFamily,
+                    fontSize: 22,
+                    color: Color.fromARGB(255, 255, 255, 255)),
+              ),
+            ),
           ),
-        )
-      ]),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const DashBoard()));
+            },
+            child: Container(
+              height: 50,
+              width: 250,
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Center(
+                  child: Text(
+                'Shop Now',
+                style: TextStyle(
+                    fontFamily: GoogleFonts.openSans().fontFamily,
+                    fontSize: 18,
+                    color: Colors.white),
+              )),
+            ),
+          )
+        ]),
+      ),
     );
   }
 }
