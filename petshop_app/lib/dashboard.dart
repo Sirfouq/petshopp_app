@@ -3,9 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petshop_app/util/input_field.dart';
+import 'package:petshop_app/util/recommendation_card.dart';
 
 class DashBoard extends StatefulWidget {
-  const DashBoard({super.key});
+ const DashBoard({super.key});
 
   @override
   State<DashBoard> createState() => _DashBoardState();
@@ -15,6 +16,11 @@ class _DashBoardState extends State<DashBoard> {
   bool hasNewNotification = true;
   final controller = TextEditingController();
   final hintext = 'Search in app .....';
+  final List items = [
+    ['lib/assets/dog_food.png',  'Naturea'],
+    ['lib/assets/dog_toys.png',  'Doggies'],
+    ['lib/assets/dog_food.png', 'Royal Canin']
+  ];
 
   void handleNotification() {
     setState(() => hasNewNotification = false);
@@ -28,6 +34,7 @@ class _DashBoardState extends State<DashBoard> {
         child: Padding(
           padding: EdgeInsets.all(25.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,10 +108,32 @@ class _DashBoardState extends State<DashBoard> {
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.green[100],
                       ),
-                      child: Image.asset('lib/assets/searching.png',),
+                      child: Image.asset(
+                        'lib/assets/searching.png',
+                      ),
                     )
                   ],
                 ),
+              ),
+              Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text('For You',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          fontSize: 26,
+                          fontFamily: GoogleFonts.montserrat().fontFamily,
+                          fontWeight: FontWeight.bold))),
+              Container(
+                height: 250,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: items.length,
+                    itemBuilder: ((context, index) {
+                      return Recommend_Card(
+                          background_color: Colors.green[100]??Colors.grey,
+                          image: items[index][0],
+                          text: items[index][1]);
+                    })),
               )
             ],
           ),
