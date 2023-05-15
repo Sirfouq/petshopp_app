@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:petshop_app/config/app_router.dart';
 import 'package:petshop_app/dashboard.dart';
 
 void main() {
@@ -13,12 +15,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routerConfig: router
     );
   }
 }
@@ -63,8 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const DashBoard()));
+              return context.go('/dashboard');
             },
             child: Container(
               height: 50,
