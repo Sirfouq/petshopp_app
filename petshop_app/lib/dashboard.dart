@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:petshop_app/util/input_field.dart';
 import 'package:petshop_app/util/recommendation_card.dart';
 
 class DashBoard extends StatefulWidget {
- const DashBoard({super.key});
+  const DashBoard({super.key});
 
   @override
   State<DashBoard> createState() => _DashBoardState();
@@ -17,8 +17,8 @@ class _DashBoardState extends State<DashBoard> {
   final controller = TextEditingController();
   final hintext = 'Search in app .....';
   final List items = [
-    ['lib/assets/dog_food.png',  'Naturea'],
-    ['lib/assets/dog_toys.png',  'Doggies'],
+    ['lib/assets/dog_food.png', 'Naturea'],
+    ['lib/assets/dog_toys.png', 'Doggies'],
     ['lib/assets/dog_food.png', 'Royal Canin']
   ];
 
@@ -29,6 +29,7 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromARGB(255, 239, 238, 224),
       body: SafeArea(
         child: Padding(
@@ -54,9 +55,7 @@ class _DashBoardState extends State<DashBoard> {
                         Text(
                           'Hello @User',
                           style: TextStyle(
-                              fontFamily: GoogleFonts.inter().fontFamily,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16),
+                              fontWeight: FontWeight.bold, fontSize: 16),
                         )
                       ],
                     ),
@@ -120,9 +119,7 @@ class _DashBoardState extends State<DashBoard> {
                   child: Text('For You',
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                          fontSize: 26,
-                          fontFamily: GoogleFonts.montserrat().fontFamily,
-                          fontWeight: FontWeight.bold))),
+                          fontSize: 26, fontWeight: FontWeight.bold))),
               Container(
                 height: 250,
                 child: ListView.builder(
@@ -130,7 +127,7 @@ class _DashBoardState extends State<DashBoard> {
                     itemCount: items.length,
                     itemBuilder: ((context, index) {
                       return Recommend_Card(
-                          background_color: Colors.green[100]??Colors.grey,
+                          background_color: Colors.green[100] ?? Colors.grey,
                           image: items[index][0],
                           text: items[index][1]);
                     })),

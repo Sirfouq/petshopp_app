@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class InputField extends StatelessWidget {
   final TextEditingController controller;
@@ -17,11 +17,11 @@ class InputField extends StatelessWidget {
       child: TextField(
           controller: controller,
           decoration: InputDecoration(
-              constraints: BoxConstraints(maxWidth: 300),
+              constraints: BoxConstraints(maxWidth: 280),
               hintText: hintext,
               hintStyle: TextStyle(
                   color: Colors.grey.shade500,
-                  fontFamily: GoogleFonts.openSans().fontFamily),
+                  ),
               enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                 color: Colors.white,

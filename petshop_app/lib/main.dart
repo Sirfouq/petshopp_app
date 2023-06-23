@@ -2,13 +2,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 import 'package:lottie/lottie.dart';
 import 'package:petshop_app/config/app_router.dart';
-import 'package:petshop_app/dashboard.dart';
+import 'package:petshop_app/services/dbservices.dart';
 
-void main() {
+
+void main() async {
+  await Hive.initFlutter();
+  // var box =  HiveService('box');
   runApp(const MyApp());
-}
+} 
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -16,12 +22,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routerConfig: router
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        routerConfig: router);
   }
 }
 
@@ -45,8 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
             child: SizedBox(
               width: 500,
               height: 300,
-              child:
-                  Lottie.asset('lib/assets/dog.json', frameRate: FrameRate(120)),
+              child: Lottie.asset('lib/assets/dog.json',
+                  frameRate: FrameRate(120)),
             ),
           ),
           SizedBox(
@@ -57,7 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontFamily: GoogleFonts.workSans().fontFamily,
                     fontSize: 22,
                     color: Color.fromARGB(255, 255, 255, 255)),
               ),
@@ -77,9 +81,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Text(
                 'Shop Now',
                 style: TextStyle(
-                    fontFamily: GoogleFonts.openSans().fontFamily,
                     fontSize: 18,
-                    color: Colors.white),
+                    color: Colors.white,
+                    fontFamily: GoogleFonts.openSans().fontFamily),
               )),
             ),
           )
