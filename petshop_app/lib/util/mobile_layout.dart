@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors, must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:petshop_app/util/recommendation_card.dart';
 
 import 'input_field.dart';
@@ -50,11 +53,11 @@ class MobileLayout extends StatelessWidget {
               GestureDetector(
                 onTap: () => handleNotification(),
                 child: Container(
-                  width: 40,
-                  height: 40,
+                  width: 50,
+                  height: 50,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(20)),
                   child: Stack(children: [
                     Center(
                       child: Icon(
@@ -103,10 +106,17 @@ class MobileLayout extends StatelessWidget {
           ),
           Padding(
               padding: EdgeInsets.all(10),
-              child: Text('For You',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold))),
-          Container(
+              child: Expanded(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text('For You',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                              fontSize: 26, fontWeight: FontWeight.bold))
+                    ]),
+              )),
+          SizedBox(
             height: 250,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -117,8 +127,90 @@ class MobileLayout extends StatelessWidget {
                       image: items[index][0],
                       text: items[index][1]);
                 })),
-          )
+          ),
+          SizedBox(
+            height: 20,
+            width: 20,
+          ),
+          TabsScroll(),
         ],
+      ),
+    );
+  }
+}
+
+// class TabsScroll extends StatelessWidget {
+//   final List items = ["All", "Food", "Toys", "Accessories", "Containers"];
+
+//   TabsScroll({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListView.builder(
+//       scrollDirection: Axis.horizontal,
+//       itemCount: items.length,
+//       itemBuilder: (context, index) {
+//         return Container();
+//       },
+//     );
+//   }
+// }
+
+class TabsScroll extends StatefulWidget {
+  const TabsScroll({Key? key});
+
+  @override
+  State<TabsScroll> createState() => _TabsScrollState();
+}
+
+class _TabsScrollState extends State<TabsScroll> {
+  final List<String> items = [
+    "All",
+    "Food",
+    "Toys",
+    "Accessories",
+    "Containers"
+  ];
+  int selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+            child: Container(
+              width: 120,
+              decoration: BoxDecoration(
+                color: index == selectedIndex
+                    ? Colors.green[100]
+                    : Colors.red[250],
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Center(
+                child: Text(
+                  items[index],
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: index == selectedIndex
+                        ? Colors.white
+                        : Colors.black, // Set text color for unselected tabs
+                    fontSize: 18,
+                    fontFamily: GoogleFonts.openSans().fontFamily,
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
