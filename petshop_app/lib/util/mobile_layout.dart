@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petshop_app/util/recommendation_card.dart';
 
@@ -24,7 +25,7 @@ class MobileLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(25.0),
+      padding: EdgeInsets.all(15.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -106,26 +107,29 @@ class MobileLayout extends StatelessWidget {
           ),
           Padding(
               padding: EdgeInsets.all(10),
-              child: Expanded(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text('For You',
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                              fontSize: 26, fontWeight: FontWeight.bold))
-                    ]),
-              )),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text('For You',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 26, fontWeight: FontWeight.bold))
+                  ])),
           SizedBox(
             height: 250,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: items.length,
                 itemBuilder: ((context, index) {
-                  return Recommend_Card(
-                      background_color: Colors.green[100] ?? Colors.grey,
-                      image: items[index][0],
-                      text: items[index][1]);
+                  return GestureDetector(
+                    onTap: () {
+                      return context.go('/dashboard/item_details/${items[index][1]}');
+                    },
+                    child: Recommend_Card(
+                        background_color: Colors.green[100] ?? Colors.grey,
+                        image: items[index][0],
+                        text: items[index][1]),
+                  );
                 })),
           ),
           SizedBox(
