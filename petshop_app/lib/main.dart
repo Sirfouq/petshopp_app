@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -9,12 +10,11 @@ import 'package:lottie/lottie.dart';
 import 'package:petshop_app/config/app_router.dart';
 import 'package:petshop_app/services/dbservices.dart';
 
-
 void main() async {
   await Hive.initFlutter();
   // var box =  HiveService('box');
   runApp(const MyApp());
-} 
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
