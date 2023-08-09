@@ -5,22 +5,19 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 
 class ModernTabs extends StatefulWidget {
   final Function(int index) onTabTap;
-  ModernTabs({super.key,required this.onTabTap});
+  ModernTabs({super.key, required this.onTabTap});
 
   @override
   State<ModernTabs> createState() => _ModernTabState();
 }
 
 class _ModernTabState extends State<ModernTabs> {
-  
-
-  void onTapReturn(int index){
+  void onTapReturn(int index) {
     widget.onTabTap(index);
   }
 
   @override
   Widget build(BuildContext context) {
-  
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
       child: GNav(
@@ -33,33 +30,33 @@ class _ModernTabState extends State<ModernTabs> {
         tabs: [
           GButton(
             icon: Icons.home,
-            iconSize: 30.0,
-            text: 'Home',
+            iconSize: 25.0,
             textColor: Colors.white,
             gap: 10,
+            borderRadius: BorderRadius.circular(25.0),
             iconActiveColor: Colors.white,
           ),
           GButton(
               icon: Icons.favorite,
-              iconSize: 30.0,
-              text: 'Likes',
+              iconSize: 25.0,
               textColor: Colors.white,
               gap: 10,
+              borderRadius: BorderRadius.circular(25.0),
               iconActiveColor: Colors.white),
           GButton(
               icon: Icons.search,
-              iconSize: 30.0,
-              text: 'Search',
+              iconSize: 25.0,
               textColor: Colors.white,
               gap: 10,
+              borderRadius: BorderRadius.circular(25.0),
               iconActiveColor: Colors.white),
           GButton(
               icon: Icons.person,
-              iconSize: 30.0,
-              text: 'Profile',
+              iconSize: 25.0,
               textSize: 20.0,
               textColor: Colors.white,
               gap: 10,
+              borderRadius: BorderRadius.circular(25.0),
               iconActiveColor: Colors.white)
         ],
       ),

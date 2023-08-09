@@ -7,9 +7,13 @@ class Recommend_Card extends StatelessWidget {
   final String text;
   final Color? background_color;
   final String image;
+  final double width;
+  final double height;
 
   const Recommend_Card(
       {super.key,
+      required this.height,
+      required this.width,
       required this.background_color,
       required this.image,
       required this.text});
@@ -21,12 +25,12 @@ class Recommend_Card extends StatelessWidget {
       child: ClipRRect(borderRadius: BorderRadius.circular(10),
         child: Container(
           color: background_color,
-          width: 200,
+          width: width,
           child: Column(mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.asset(image),
+              Flexible(child: Image.asset(image,fit: BoxFit.contain,)),
               SizedBox(height: 20,),
-              Text(text,style: TextStyle(fontSize: 14),),
+              Text(text,style: TextStyle(fontSize: 14),textAlign: TextAlign.end,),
             ],
           ),
         ),

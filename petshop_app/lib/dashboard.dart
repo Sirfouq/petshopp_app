@@ -20,6 +20,7 @@ class _DashBoardState extends State<DashBoard> {
   bool hasNewNotification = true;
   int _selectedTab = 0;
   final controller = TextEditingController();
+  final pagecontroler = PageController();
   final hintext = 'Search in app .....';
   final List items = [
     ['lib/assets/dog_food.png', 'Naturea'],
@@ -46,6 +47,7 @@ class _DashBoardState extends State<DashBoard> {
     tabs = [
       ResponsiveLayout(
         mobilelayout: MobileLayout(
+          pageController: PageController(),
           hasNewNotification: hasNewNotification,
           items: items,
           controller: controller,
@@ -55,6 +57,7 @@ class _DashBoardState extends State<DashBoard> {
       ),
       ResponsiveLayout(
         mobilelayout: MobileLayout(
+          pageController: PageController(),
           hasNewNotification: hasNewNotification,
           items: items,
           controller: controller,
