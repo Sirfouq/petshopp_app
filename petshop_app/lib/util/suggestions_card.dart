@@ -15,7 +15,8 @@ class SuggestionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color? darkerBackgroundColor = darkenColor(background_color, 0.7); // Adjust the opacity value
+    Color? darkerBackgroundColor =
+        darkenColor(background_color, 0.7); // Adjust the opacity value
 
     return Container(
       decoration: BoxDecoration(
@@ -42,7 +43,12 @@ class SuggestionCard extends StatelessWidget {
                       fontSize: 22),
                 ),
                 SizedBox(height: 20),
-                Padding(padding: EdgeInsets.symmetric(horizontal: 10.0),child: MoreButton(onTap: () {},color: darkerBackgroundColor,)),
+                Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    child: MoreButton(
+                      onTap: () {},
+                      color: darkerBackgroundColor,
+                    )),
               ]),
             ),
           ),
@@ -60,15 +66,16 @@ class SuggestionCard extends StatelessWidget {
 class MoreButton extends StatelessWidget {
   final Function()? onTap;
   final Color? color;
-  const MoreButton({super.key, required this.onTap,required this.color});
+  const MoreButton({super.key, required this.onTap, required this.color});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),color: color),
-        padding: EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50), color: color),
+        padding: EdgeInsets.all(15.0),
         child: Row(children: [
           Text(
             'Learn More',
@@ -76,7 +83,7 @@ class MoreButton extends StatelessWidget {
           ),
           SizedBox(width: 10),
           Icon(
-            Icons.arrow_forward_ios,
+            Icons.arrow_forward,
             color: Colors.white,
           )
         ]),
@@ -85,12 +92,11 @@ class MoreButton extends StatelessWidget {
   }
 }
 
-  Color darkenColor(Color color, double factor) {
-    return Color.fromARGB(
-      color.alpha,
-      (color.red * factor).toInt(),
-      (color.green * factor).toInt(),
-      (color.blue * factor).toInt(),
-    );
-  }
-
+Color darkenColor(Color color, double factor) {
+  return Color.fromARGB(
+    color.alpha,
+    (color.red * factor).toInt(),
+    (color.green * factor).toInt(),
+    (color.blue * factor).toInt(),
+  );
+}

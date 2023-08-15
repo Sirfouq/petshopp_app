@@ -5,7 +5,8 @@ import 'package:go_router/go_router.dart';
 
 class ItemDetails extends StatefulWidget {
   final String name;
-  const ItemDetails({super.key, required this.name});
+  final String image;
+  const ItemDetails({super.key, required this.name,required this.image});
 
   @override
   State<ItemDetails> createState() => _ItemDetailsState();
@@ -29,7 +30,7 @@ class _ItemDetailsState extends State<ItemDetails> {
           Expanded(
             child: ListView(children: [
               Image.asset(
-                'lib/assets/dog_food.png',
+                'lib/assets/${widget.image}',
               ),
               Text('Lorem Ipsum')
             ],),

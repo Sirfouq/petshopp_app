@@ -7,14 +7,15 @@ import 'package:petshop_app/util/item_details.dart';
 
 final GoRouter router = GoRouter(routes: [
   GoRoute(path: '/', builder: ((context, state) => MyHomePage(title: 'Home'))),
-  GoRoute(
-      path: '/dashboard',
-      builder: (context, state) => HomePage(),
-      routes: [
-        GoRoute(
-          path: 'item_details/:name',
-          builder: (context, state) => ItemDetails(name:state.pathParameters["name"]! ,),
-        )
-      ]),
+  GoRoute(path: '/dashboard', builder: (context, state) => HomePage(), routes: [
+    GoRoute(
+      path: 'item_details/:name/:image', // Separate parameters with slashes
+      builder: (context, state) {
+        final String name = state.pathParameters["name"]!;
+        final String image = state.pathParameters["image"]!;
+        return ItemDetails(name: name, image: image);
+      },
+    )
+  ]),
   //GoRoute(path: '/item_details',builder: (context, state) => ItemDetails(),),
 ]);

@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:petshop_app/util/Suggestions_card.dart';
 import 'package:petshop_app/util/recommendation_card.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:path/path.dart';
+
 
 import 'input_field.dart';
 
@@ -166,7 +168,7 @@ class _MobileLayoutState extends State<MobileLayout> {
                         return GestureDetector(
                           onTap: () {
                             return context.go(
-                                '/dashboard/item_details/${widget.items[index][1]}');
+                                '/dashboard/item_details/${widget.items[index][1]}/${basename(widget.items[index][0])}');
                           },
                           child: Recommend_Card(
                               width: 200,
