@@ -3,27 +3,35 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:petshop_app/util/Suggestions_card.dart';
 import 'package:petshop_app/util/recommendation_card.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'input_field.dart';
 
-class MobileLayout extends StatelessWidget {
+class MobileLayout extends StatefulWidget {
   final bool hasNewNotification;
   final TextEditingController controller;
   final List items;
+  final List exploreItems;
   final PageController pageController;
   final Function handleNotification;
-
-  final String hintext = "Search in app";
 
   const MobileLayout(
       {super.key,
       required this.hasNewNotification,
       required this.controller,
       required this.items,
+      required this.exploreItems,
       required this.handleNotification,
       required this.pageController});
+
+  @override
+  State<MobileLayout> createState() => _MobileLayoutState();
+}
+
+class _MobileLayoutState extends State<MobileLayout> {
+  final String hintext = "Search in app";
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +60,7 @@ class MobileLayout extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () => handleNotification(),
+              onTap: () => widget.handleNotification(),
               child: Container(
                 width: 50,
                 height: 50,
@@ -66,7 +74,7 @@ class MobileLayout extends StatelessWidget {
                       color: Color.fromARGB(255, 118, 118, 110),
                     ),
                   ),
-                  if (hasNewNotification)
+                  if (widget.hasNewNotification)
                     Positioned(
                         top: 0,
                         right: 0,
@@ -92,7 +100,7 @@ class MobileLayout extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       InputField(
-                        controller: controller,
+                        controller: widget.controller,
                         hintext: hintext,
                       ),
                       Container(
@@ -115,18 +123,20 @@ class MobileLayout extends StatelessWidget {
                     height: 250,
                     width: 400,
                     child: PageView.builder(
-                      controller: pageController,
+                      controller: widget.pageController,
+                      scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) => SizedBox(
                         height: 150,
                         width: 350,
-                        child: Recommend_Card(
-                            width: 400,
-                            height: 120,
-                            background_color: Colors.purple[100],
-                            image: items[index][0],
-                            text: "Explore options"),
+                        child: SuggestionCard(
+                          image: widget.exploreItems[
+                              index % widget.exploreItems.length][0],
+                          displaytext: widget.exploreItems[
+                              index % widget.exploreItems.length][1],
+                          background_color: widget.exploreItems[
+                              index % widget.exploreItems.length][2],
+                        ),
                       ),
-                      itemCount: items.length,
                     ),
                   ),
                 ),
@@ -136,7 +146,8 @@ class MobileLayout extends StatelessWidget {
                 ),
                 Center(
                     child: SmoothPageIndicator(
-                        controller: pageController, count: items.length)),
+                        controller: widget.pageController,
+                        count: widget.exploreItems.length)),
                 SizedBox(
                   height: 20,
                   width: 20,
@@ -150,19 +161,20 @@ class MobileLayout extends StatelessWidget {
                   height: 250,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: items.length,
+                      itemCount: widget.items.length,
                       itemBuilder: ((context, index) {
                         return GestureDetector(
                           onTap: () {
-                            return context
-                                .go('/dashboard/item_details/${items[index][1]}');
+                            return context.go(
+                                '/dashboard/item_details/${widget.items[index][1]}');
                           },
                           child: Recommend_Card(
                               width: 200,
                               height: 250,
-                              background_color: Colors.green[100] ?? Colors.grey,
-                              image: items[index][0],
-                              text: items[index][1]),
+                              background_color:
+                                  Colors.green[100] ?? Colors.grey,
+                              image: widget.items[index][0],
+                              text: widget.items[index][1]),
                         );
                       })),
                 ),

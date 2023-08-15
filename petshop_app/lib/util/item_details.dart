@@ -3,18 +3,38 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class ItemDetails extends StatelessWidget {
+class ItemDetails extends StatefulWidget {
   final String name;
-  const ItemDetails({super.key,required this.name});
+  const ItemDetails({super.key, required this.name});
 
   @override
+  State<ItemDetails> createState() => _ItemDetailsState();
+}
+
+class _ItemDetailsState extends State<ItemDetails> {
+  @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
+        elevation: 5,
         backgroundColor: Colors.green[200],
-        title: Text(name),
-        leading: IconButton(onPressed: () => context.go('/dashboard'), icon: Icon(Icons.arrow_back_ios_new))
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () => context.go('/dashboard'),
+        ),
+        title: Text(widget.name),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView(children: [
+              Image.asset(
+                'lib/assets/dog_food.png',
+              ),
+              Text('Lorem Ipsum')
+            ],),
+          )
+        ],
       ),
     );
   }

@@ -8,6 +8,8 @@ class HiveService {
     openBox(boxName);
   }
 
+  
+  
   Future<void> openBox(String boxName) async {
     box = await Hive.openBox(boxName);
   }
@@ -31,3 +33,4 @@ class HiveService {
 
   // Additional methods for delete, etc.
 }
+

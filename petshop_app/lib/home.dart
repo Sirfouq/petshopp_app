@@ -9,14 +9,14 @@ import 'package:petshop_app/util/mobile_layout.dart';
 import 'package:petshop_app/util/recommendation_card.dart';
 import 'package:petshop_app/util/responsive_layout.dart';
 
-class DashBoard extends StatefulWidget {
-  const DashBoard({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<DashBoard> createState() => _DashBoardState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _DashBoardState extends State<DashBoard> {
+class _HomePageState extends State<HomePage> {
   bool hasNewNotification = true;
   int _selectedTab = 0;
   final controller = TextEditingController();
@@ -26,6 +26,11 @@ class _DashBoardState extends State<DashBoard> {
     ['lib/assets/dog_food.png', 'Naturea'],
     ['lib/assets/dog_toys.png', 'Doggies'],
     ['lib/assets/dog_food.png', 'Royal Canin']
+  ];
+  final List exploreItems = [
+    ['lib/assets/vet.png', 'Find a veteranian near you !',Colors.blue[200]],
+    ['lib/assets/offers.png', 'Discover our special offers !',Colors.red[200]],
+    
   ];
 
   void handleNotification() {
@@ -50,6 +55,7 @@ class _DashBoardState extends State<DashBoard> {
           pageController: PageController(),
           hasNewNotification: hasNewNotification,
           items: items,
+          exploreItems: exploreItems,
           controller: controller,
           handleNotification: handleNotification,
         ),
@@ -60,6 +66,7 @@ class _DashBoardState extends State<DashBoard> {
           pageController: PageController(),
           hasNewNotification: hasNewNotification,
           items: items,
+          exploreItems: exploreItems,
           controller: controller,
           handleNotification: handleNotification,
         ),
@@ -91,7 +98,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DashBoard(),
+      home: HomePage(),
     );
   }
 }
