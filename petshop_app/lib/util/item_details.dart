@@ -21,7 +21,7 @@ class _ItemDetailsState extends State<ItemDetails> {
         backgroundColor: Colors.green[200],
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
-          onPressed: () => context.go('/dashboard'),
+          onPressed: () => context.go('/home'),
         ),
         title: Text(widget.name),
       ),

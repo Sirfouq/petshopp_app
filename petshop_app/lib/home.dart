@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:petshop_app/settings.dart';
 import 'package:petshop_app/util/ModernTabs.dart';
-import 'package:petshop_app/util/desktop_layout.dart';
-
 import 'package:petshop_app/util/input_field.dart';
-import 'package:petshop_app/util/mobile_layout.dart';
 import 'package:petshop_app/util/recommendation_card.dart';
-import 'package:petshop_app/util/responsive_layout.dart';
+import 'layouts/desktop_layout.dart';
+import 'layouts/mobile_layout.dart';
+import 'layouts/responsive_layout.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,9 +27,8 @@ class _HomePageState extends State<HomePage> {
     ['lib/assets/dog_food.png', 'Royal Canin']
   ];
   final List exploreItems = [
-    ['lib/assets/vet.png', 'Find a veteranian near you !',Colors.blue[200]],
-    ['lib/assets/offers.png', 'Discover our special offers !',Colors.red[200]],
-    
+    ['lib/assets/vet.png', 'Find a veteranian near you !', Colors.blue[200]],
+    ['lib/assets/offers.png', 'Discover our special offers !', Colors.red[200]],
   ];
 
   void handleNotification() {
@@ -80,9 +78,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: ModernTabs(onTabTap: tabTap,),
+      bottomNavigationBar: ModernTabs(
+        onTabTap: tabTap,
+      ),
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color.fromARGB(255, 239, 238, 224),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: tabs[_selectedTab],
       ),

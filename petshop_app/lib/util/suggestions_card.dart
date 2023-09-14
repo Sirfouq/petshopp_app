@@ -75,18 +75,21 @@ class MoreButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50), color: color),
-        padding: EdgeInsets.all(15.0),
-        child: Row(children: [
-          Text(
-            'Learn More',
-            style: TextStyle(fontSize: 16, color: Colors.white),
-          ),
-          SizedBox(width: 10),
-          Icon(
-            Icons.arrow_forward,
-            color: Colors.white,
-          )
-        ]),
+        padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 15.0), // Adjusted padding
+        child: Row(
+          mainAxisSize: MainAxisSize.min, // Makes Row occupy only required space
+          children: [
+            Text(
+              'Learn More',
+              style: TextStyle(fontSize: 16, color: Colors.white),
+            ),
+            SizedBox(width: 5),  // Reduced width
+            Icon(
+              Icons.arrow_forward,
+              color: Colors.white,
+            )
+          ],
+        ),
       ),
     );
   }

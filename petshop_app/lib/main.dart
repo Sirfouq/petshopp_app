@@ -9,6 +9,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:petshop_app/config/app_router.dart';
 import 'package:petshop_app/services/dbservices.dart';
+import 'package:petshop_app/themes/dark_theme.dart';
+import 'package:petshop_app/themes/light_theme.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -23,9 +25,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
         title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme:lightTheme,
+        darkTheme: darkTheme,
         routerConfig: router);
   }
 }
@@ -42,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(223, 184, 235, 245),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Padding(
@@ -63,26 +64,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 22,
-                    color: Color.fromARGB(255, 255, 255, 255)),
+                    ),
               ),
             ),
           ),
           GestureDetector(
             onTap: () {
-              return context.go('/dashboard');
+              return context.go('/home');
             },
             child: Container(
               height: 50,
               width: 250,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: Theme.of(context).colorScheme.primary,
                   borderRadius: BorderRadius.circular(10)),
               child: Center(
                   child: Text(
                 'Shop Now',
                 style: TextStyle(
                     fontSize: 18,
-                    color: Colors.white,
                     fontFamily: GoogleFonts.openSans().fontFamily),
               )),
             ),

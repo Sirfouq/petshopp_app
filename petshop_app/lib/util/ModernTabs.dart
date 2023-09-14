@@ -19,18 +19,18 @@ class _ModernTabState extends State<ModernTabs> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       child: GNav(
         selectedIndex: 0,
         onTabChange: (index) => onTapReturn(index),
         backgroundColor: Color.fromARGB(255, 239, 238, 224),
         color: Color.fromARGB(255, 123, 167, 125),
-        tabBorderRadius: 35.0,
+        tabBorderRadius: 25.0,
         tabBackgroundColor: Color.fromARGB(255, 200, 230, 201),
         tabs: [
           GButton(
             icon: Icons.home,
-            iconSize: 25.0,
+            iconSize: 20.0,
             textColor: Colors.white,
             gap: 10,
             borderRadius: BorderRadius.circular(25.0),
