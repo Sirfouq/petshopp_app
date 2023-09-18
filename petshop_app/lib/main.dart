@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 50,
               width: 250,
               decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.surface,
                   borderRadius: BorderRadius.circular(10)),
               child: Center(
                   child: Text(

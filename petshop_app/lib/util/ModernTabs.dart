@@ -23,7 +23,7 @@ class _ModernTabState extends State<ModernTabs> {
       child: GNav(
         selectedIndex: 0,
         onTabChange: (index) => onTapReturn(index),
-        backgroundColor: Color.fromARGB(255, 239, 238, 224),
+        backgroundColor: Theme.of(context).colorScheme.background,
         color: Color.fromARGB(255, 123, 167, 125),
         tabBorderRadius: 25.0,
         tabBackgroundColor: Color.fromARGB(255, 200, 230, 201),

@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-
 class InputField extends StatelessWidget {
   final TextEditingController controller;
   final String hintext;
@@ -17,19 +16,9 @@ class InputField extends StatelessWidget {
       child: TextField(
           controller: controller,
           decoration: InputDecoration(
-              constraints: BoxConstraints(maxWidth: 280),
-              hintText: hintext,
-              hintStyle: TextStyle(
-                  color: Colors.grey.shade500,
-                  ),
-              enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(
-                color: Colors.white,
-              )),
-              focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white)),
-              fillColor: Colors.grey.shade100,
-              filled: true)),
+            constraints: BoxConstraints(maxWidth: 280),
+            hintText: hintext,
+          )),
     );
   }
 }

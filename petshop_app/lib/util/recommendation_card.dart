@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 class Recommend_Card extends StatelessWidget {
   final String text;
-  final Color? background_color;
   final String image;
   final double width;
   final double height;
@@ -14,7 +13,6 @@ class Recommend_Card extends StatelessWidget {
       {super.key,
       required this.height,
       required this.width,
-      required this.background_color,
       required this.image,
       required this.text});
 
@@ -24,7 +22,7 @@ class Recommend_Card extends StatelessWidget {
       padding: EdgeInsets.only(left: 15.0),
       child: ClipRRect(borderRadius: BorderRadius.circular(10),
         child: Container(
-          color: background_color,
+          color: Theme.of(context).colorScheme.surface,
           width: width,
           child: Column(mainAxisAlignment: MainAxisAlignment.start,
             children: [

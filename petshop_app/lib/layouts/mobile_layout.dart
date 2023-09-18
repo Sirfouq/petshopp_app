@@ -9,7 +9,6 @@ import 'package:petshop_app/util/item_details.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:path/path.dart';
 
-
 import 'package:petshop_app/util/input_field.dart';
 
 class MobileLayout extends StatefulWidget {
@@ -174,8 +173,6 @@ class _MobileLayoutState extends State<MobileLayout> {
                           child: Recommend_Card(
                               width: 200,
                               height: 250,
-                              background_color:
-                                  Colors.green[100] ?? Colors.grey,
                               image: widget.items[index][0],
                               text: widget.items[index][1]),
                         );
