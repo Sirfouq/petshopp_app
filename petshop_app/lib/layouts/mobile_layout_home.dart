@@ -19,14 +19,15 @@ class MobileLayout extends StatefulWidget {
   final PageController pageController;
   final Function handleNotification;
 
-  const MobileLayout(
-      {super.key,
-      required this.hasNewNotification,
-      required this.controller,
-      required this.items,
-      required this.exploreItems,
-      required this.handleNotification,
-      required this.pageController});
+  const MobileLayout({
+    super.key,
+    required this.hasNewNotification,
+    required this.controller,
+    required this.items,
+    required this.exploreItems,
+    required this.handleNotification,
+    required this.pageController,
+  });
 
   @override
   State<MobileLayout> createState() => _MobileLayoutState();

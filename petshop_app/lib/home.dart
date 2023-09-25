@@ -5,7 +5,7 @@ import 'package:petshop_app/util/ModernTabs.dart';
 import 'package:petshop_app/util/input_field.dart';
 import 'package:petshop_app/util/recommendation_card.dart';
 import 'layouts/desktop_layout.dart';
-import 'layouts/mobile_layout.dart';
+import 'layouts/mobile_layout_home.dart';
 import 'layouts/responsive_layout.dart';
 
 class HomePage extends StatefulWidget {

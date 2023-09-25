@@ -3,6 +3,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:petshop_app/home.dart';
 import 'package:petshop_app/main.dart';
+import 'package:petshop_app/settings.dart';
 import 'package:petshop_app/util/item_details.dart';
 
 final GoRouter router = GoRouter(routes: [
@@ -17,5 +18,6 @@ final GoRouter router = GoRouter(routes: [
       },
     )
   ]),
+  GoRoute(path: '/settings',builder: (context, state) => SettingsPage(),)
   //GoRoute(path: '/item_details',builder: (context, state) => ItemDetails(),),
 ]);
