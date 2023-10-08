@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
 import 'package:lottie/lottie.dart';
 import 'package:petshop_app/config/app_router.dart';
 import 'package:petshop_app/services/dbservices.dart';
@@ -15,7 +15,7 @@ import 'package:petshop_app/themes/light_theme.dart';
 void main() async {
   await Hive.initFlutter();
   // var box =  HiveService('box');
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
         title: 'Flutter Demo',
-        theme:lightTheme,
+        theme: lightTheme,
         darkTheme: darkTheme,
         routerConfig: router);
   }
@@ -62,9 +62,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 'Provide the best treats to your best friend !!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                    ),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                ),
               ),
             ),
           ),

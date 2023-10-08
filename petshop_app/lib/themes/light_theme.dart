@@ -15,7 +15,11 @@ ThemeData lightTheme = ThemeData(
         primary: Colors.grey.shade200,
         secondary: Colors.grey.shade100,
         surface: Colors.green.shade100,
-        tertiary: Colors.pink.shade100),
+        tertiary: Colors.pink.shade100,
+        ),
+    textTheme: TextTheme(),
+
+
         
 
     inputDecorationTheme: InputDecorationTheme(
